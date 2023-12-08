@@ -1,23 +1,27 @@
+import Card from "react-bootstrap/Card";
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class UserData extends Component {
   render() {
-    const { userData } = this.props;
+    const { user } = this.props;
 
     return (
-      <div>   
-        {userData && (
-          <div>
-            <img src={userData.avatar_url} alt="User Avatar" style={{ width: '100px', borderRadius: '50%' }} />
-            <p>Name: {userData.name}</p>
-            <p>Location: {userData.location}</p>
-            <p>Bio: {userData.bio}</p>
-          </div>
-        )}
-      </div>
+        <Card style={{ width: "20rem", marginTop: '10px'}}>
+        <Card.Img variant="top" src={user.avatar_url} alt={`${user.login}'s avatar`} />
+        <Card.Body>
+        <Card.Title>{user.name}</Card.Title>
+        <Card.Title>Location: {user.location}</Card.Title>
+        <Card.Text>Bio: {user.bio}</Card.Text>
+        </Card.Body>
+        </Card>
     );
   }
 }
+
+UserData.propTypes = {
+    user: PropTypes.object,
+  };
 
 export default UserData;
 

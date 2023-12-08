@@ -1,21 +1,21 @@
+import ListGroup from 'react-bootstrap/ListGroup';
 import React from 'react';
-import './Components.css'
+import PropTypes from 'prop-types';
 
-const RepositoryList = ({ repositories }) => {
-  return (
-    <div>
-      {repositories && (
-        <ul>
-          {repositories.map((repo) => (
-            <li key={repo.id}>
-              <p>Repository Name: {repo.name}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-};
+const RepositoryList = ({ repos }) => (
+  <div>
+    <ListGroup style={{ width: "30rem", marginTop: '10px' }}>
+      {repos.map((repo) => (
+        <ListGroup.Item style={{ textAlign: 'center'}} key={repo.id}>{repo.name}</ListGroup.Item>
+      ))}
+    </ListGroup>
+  </div>
+);
+
+RepositoryList.propTypes = {
+    repos: PropTypes.array,
+  };
+
 
 export default RepositoryList;
 
